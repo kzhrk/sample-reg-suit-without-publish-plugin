@@ -9,7 +9,7 @@ export default {
         backgroundColor: '#FFFFFF',
         cursor: 'pointer',
         fontSize: 15,
-        padding: '3px 10px',
+        padding: '3px 30px',
         margin: 10,
       },
     };
