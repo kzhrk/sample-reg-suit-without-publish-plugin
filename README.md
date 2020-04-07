@@ -1,0 +1,1 @@
+# sample-reg-suit-without-publish-plugin
