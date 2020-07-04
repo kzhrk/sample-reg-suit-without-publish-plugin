@@ -30,16 +30,17 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     - name: run screenshot
+      run: yarn screenshot
+    - name: check diff
       run: |
-        yarn screenshot
-    - name: setup github user
+        git diff -- '__screenshots__' --exit-code
+        echo "::set-env name=has_diff::$?"
+        echo $has_diff
+    - name: push
+      if: $has_diff == 1
       run: |
         git config --global user.email ${GITHUB_EMAIL}
         git config --global user.name ${GITHUB_USER}
-    - name: stage changed files
-      run: git add .
-    - name: commit changed files
-      run: git commit -m 'Update snapshots'
-    - name: push
-      if: ${{ success() }}
-      run: git push origin HEAD:${{github.event.pull_request.head.ref}}
+        git add .
+        git commit -m 'Update snapshots'
+        git push origin HEAD:${{github.event.pull_request.head.ref}}
