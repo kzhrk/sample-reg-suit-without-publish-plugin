@@ -8,8 +8,8 @@ export default {
         borderRadius: 3,
         backgroundColor: '#FFFFFF',
         cursor: 'pointer',
-        fontSize: 20,
-        padding: '3px 50px',
+        fontSize: 16,
+        padding: '3px 52px',
         margin: 10,
       },
     };
