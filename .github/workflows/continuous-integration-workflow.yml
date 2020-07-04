@@ -40,5 +40,6 @@ jobs:
       run: git add .
     - name: commit changed files
       run: |
-        git commit -m 'Update snapshots'
-        git push origin HEAD:${{github.event.pull_request.head.ref}}
+        git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} --name-only -- '__screenshots__' \
+          && git commit -m 'Update snapshots'
+          && git push origin HEAD:${{github.event.pull_request.head.ref}}
