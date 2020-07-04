@@ -41,5 +41,5 @@ jobs:
     - name: commit changed files
       run: git commit -m 'Update snapshots'
     - name: push
-      if: $ {{ success() }}
+      if: ${{ success() }}
       run: git push origin HEAD:${{github.event.pull_request.head.ref}}
