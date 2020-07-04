@@ -34,7 +34,7 @@ jobs:
       run: yarn screenshot
     - name: check diff
       run: |
-        git diff -- '__screenshots__' --exit-code
+        git diff --exit-code -- '__screenshots__'
         echo "::set-env name=HAS_DIFF::$"
         echo $HAS_DIFF
     - name: push

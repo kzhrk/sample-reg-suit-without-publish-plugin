@@ -8,7 +8,7 @@ export default {
         borderRadius: 3,
         backgroundColor: '#FFFFFF',
         cursor: 'pointer',
-        fontSize: 16,
+        fontSize: 22,
         padding: '30px 50px',
         margin: 10,
       },
