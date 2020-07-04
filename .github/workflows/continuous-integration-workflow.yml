@@ -42,6 +42,9 @@ jobs:
       run: |
         git diff --name-only --exit-code -- '__screenshots__'
         if [[ $? -eq 1 ]]; then
+          echo 'commit'
           git commit -m 'Update snapshots'
           git push origin HEAD:${{github.event.pull_request.head.ref}}
+        else
+          echo 'not commit'
         fi
