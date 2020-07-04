@@ -1,7 +1,7 @@
 on: [push]
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -28,8 +28,6 @@ jobs:
     - name: run screenshot
       run: |
         yarn screenshot
-    - name: show branch
-      run: git branch
     - name: setup github user
       run: |
         git config --global user.email info@kzhrk.com
@@ -38,3 +36,5 @@ jobs:
       run: git add .
     - name: commit changed files
       run: git commit --amend --no-edit
+    - name: force push
+      run: git push --force
