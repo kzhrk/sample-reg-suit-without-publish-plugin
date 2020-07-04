@@ -3,8 +3,8 @@ on: pull_request
 jobs:
   setup:
     runs-on: ubuntu-latest
-    # env:
-    #   REPO: https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git
+    env:
+      REPO: https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git
     steps:
     - uses: actions/checkout@v2
     - name: Get yarn cache directory path
@@ -36,4 +36,4 @@ jobs:
     - name: commit changed files
       run: git commit -m 'Update snapshots'
     - name: push
-      run: git push
+      run: git push origin HEAD:${{github.event.pull_request.head.ref}}
