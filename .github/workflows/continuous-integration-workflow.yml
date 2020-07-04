@@ -33,7 +33,7 @@ jobs:
       run: yarn screenshot
     - name: push
       run: |
-        if ! git diff-index --quiet HEAD __screenshots__; then
+        if [[ `git status --porcelain` ]]; then
           git config --global user.email ${GITHUB_EMAIL}
           git config --global user.name ${GITHUB_USER}
           git add .
