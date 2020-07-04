@@ -3,8 +3,8 @@ on: pull_request
 jobs:
   setup:
     runs-on: ubuntu-latest
-    env:
-      REPO: https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git
+    # env:
+    #   REPO: https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git
     steps:
     - uses: actions/checkout@v2
     - name: Get yarn cache directory path
@@ -24,9 +24,6 @@ jobs:
         node-version: '12.x'
     - name: Install dependencies
       run: yarn install --frozen-lockfile
-    - name: workaround for detached HEAD
-      run: |
-        git checkout ${github.event.pull_request.head.ref} || git checkout -b ${github.event.pull_request.head.ref} && git pull
     - name: run screenshot
       run: |
         yarn screenshot
@@ -38,5 +35,5 @@ jobs:
       run: git add .
     - name: commit changed files
       run: git commit -m 'Update snapshots'
-    - name: force push
-      run: git push ${REPO} HEAD:${{github.event.pull_request.head.ref}}
+    - name: push
+      run: git push
