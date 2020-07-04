@@ -28,6 +28,7 @@ jobs:
       run: yarn install --frozen-lockfile
   update-snapshots:
     runs-on: ubuntu-latest
+    steps:
     - name: run screenshot
       run: |
         yarn screenshot
@@ -37,6 +38,7 @@ jobs:
     env:
       GITHUB_USER: kzhrk
       GITHUB_EMAIL: info@kzhrk.com
+    steps:
     - name: setup github user
       run: |
         git config --global user.email ${GITHUB_EMAIL}
