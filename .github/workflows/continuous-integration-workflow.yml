@@ -28,6 +28,7 @@ jobs:
       run: yarn install --frozen-lockfile
   update-snapshots:
     runs-on: ubuntu-latest
+    needs: setup
     steps:
     - name: run screenshot
       run: |
