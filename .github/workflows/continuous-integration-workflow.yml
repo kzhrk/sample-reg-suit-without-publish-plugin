@@ -28,6 +28,8 @@ jobs:
     - name: run screenshot
       run: |
         yarn screenshot
+    - name: show branch
+      run: git branch
     - name: setup github user
       run: |
         git config --global user.email info@kzhrk.com
