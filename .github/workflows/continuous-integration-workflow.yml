@@ -24,9 +24,6 @@ jobs:
         node-version: '12.x'
     - name: Install dependencies
       run: yarn install --frozen-lockfile
-    - name: workaround for detached HEAD
-      run: |
-        git checkout ${GITHUB_REF#refs/heads/} || git checkout -b ${GITHUB_REF#refs/heads/} && git pull
     - name: run screenshot
       run: |
         yarn screenshot
