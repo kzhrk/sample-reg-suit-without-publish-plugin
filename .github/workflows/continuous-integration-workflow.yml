@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REPO: https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git
+      GITHUB_USER: kzhrk
+      GITHUB_EMAIL: info@kzhrk.com
     steps:
     - uses: actions/checkout@v2
     - name: Get yarn cache directory path
@@ -29,12 +31,12 @@ jobs:
         yarn screenshot
     - name: setup github user
       run: |
-        git config --global user.email info@kzhrk.com
-        git config --global user.name kzhrk
+        git config --global user.email ${GITHUB_EMAIL}
+        git config --global user.name ${GITHUB_USER}
     - name: pull
       run: |
         git fetch
-        git merge ${{github.event.pull_request.head.ref}} origin/${{github.event.pull_request.head.ref}} 
+        git merge origin/${{github.event.pull_request.head.ref}} 
     - name: stage changed files
       run: git add .
     - name: commit changed files
