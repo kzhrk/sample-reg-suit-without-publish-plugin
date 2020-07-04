@@ -6,6 +6,7 @@ jobs:
     env:
       GITHUB_USER: kzhrk
       GITHUB_EMAIL: info@kzhrk.com
+      has_diff: 0
     steps:
     - uses: actions/checkout@v2
     - name: checkout
