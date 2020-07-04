@@ -35,7 +35,7 @@ jobs:
     - name: check diff
       run: |
         git diff -- '__screenshots__' --exit-code
-        echo "::set-env name=HAS_DIFF::$?"
+        echo "::set-env name=HAS_DIFF::$"
         echo $HAS_DIFF
     - name: push
       if: steps.vars.outputs.HAS_DIFF == 1
