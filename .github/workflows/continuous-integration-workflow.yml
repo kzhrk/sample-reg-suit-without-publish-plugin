@@ -1,7 +1,7 @@
 on: pull_request
 
 jobs:
-  setup:
+  update-snapshots:
     runs-on: ubuntu-latest
     env:
       GITHUB_USER: kzhrk
@@ -32,7 +32,6 @@ jobs:
     - name: run screenshot
       run: |
         yarn screenshot
-    steps:
     - name: setup github user
       run: |
         git config --global user.email ${GITHUB_EMAIL}
