@@ -1,12 +1,8 @@
 on: pull_request
 
 jobs:
-  update-snapshots:
+  setup:
     runs-on: ubuntu-latest
-    env:
-      REPO: https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git
-      GITHUB_USER: kzhrk
-      GITHUB_EMAIL: info@kzhrk.com
     steps:
     - uses: actions/checkout@v2
     - name: checkout
@@ -30,9 +26,17 @@ jobs:
         node-version: '12.x'
     - name: Install dependencies
       run: yarn install --frozen-lockfile
+  update-snapshots:
+    runs-on: ubuntu-latest
     - name: run screenshot
       run: |
         yarn screenshot
+  git-push:
+    runs-on: ubuntu-latest
+    needs: update-snapshots
+    env:
+      GITHUB_USER: kzhrk
+      GITHUB_EMAIL: info@kzhrk.com
     - name: setup github user
       run: |
         git config --global user.email ${GITHUB_EMAIL}
