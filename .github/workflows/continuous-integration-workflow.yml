@@ -39,12 +39,7 @@ jobs:
     - name: stage changed files
       run: git add .
     - name: commit changed files
-      run: |
-        git diff --name-only --exit-code -- '__screenshots__'
-        if [[ $? -eq 1 ]]; then
-          echo 'commit'
-          git commit -m 'Update snapshots'
-          git push origin HEAD:${{github.event.pull_request.head.ref}}
-        else
-          echo 'not commit'
-        fi
+      run: git commit -m 'Update snapshots'
+    - name: push
+      if: $ {{ success() }}
+      run: git push origin HEAD:${{github.event.pull_request.head.ref}}
