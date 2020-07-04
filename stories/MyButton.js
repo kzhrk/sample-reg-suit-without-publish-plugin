@@ -6,10 +6,10 @@ export default {
       buttonStyles: {
         border: '1px solid #eee',
         borderRadius: 3,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#ccc',
         cursor: 'pointer',
-        fontSize: 22,
-        padding: '30px 33px',
+        fontSize: 12,
+        padding: '5px 10px',
         margin: 10,
       },
     };
