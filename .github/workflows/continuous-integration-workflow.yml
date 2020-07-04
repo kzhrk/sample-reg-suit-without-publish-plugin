@@ -38,7 +38,7 @@ jobs:
         echo "::set-env name=HAS_DIFF::$?"
         echo $HAS_DIFF
     - name: push
-      if: $HAS_DIFF == '1'
+      if: HAS_DIFF == '1'
       run: |
         git config --global user.email ${GITHUB_EMAIL}
         git config --global user.name ${GITHUB_USER}
