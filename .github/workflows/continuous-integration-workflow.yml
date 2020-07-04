@@ -6,7 +6,7 @@ jobs:
     env:
       GITHUB_USER: kzhrk
       GITHUB_EMAIL: info@kzhrk.com
-      has_diff: 0
+      HAS_DIFF: 0
     steps:
     - uses: actions/checkout@v2
     - name: checkout
@@ -35,10 +35,10 @@ jobs:
     - name: check diff
       run: |
         git diff -- '__screenshots__' --exit-code
-        echo "::set-env name=has_diff::$?"
-        echo $has_diff
+        echo "::set-env name=HAS_DIFF::$?"
+        echo $HAS_DIFF
     - name: push
-      if: $has_diff == '1'
+      if: $HAS_DIFF == '1'
       run: |
         git config --global user.email ${GITHUB_EMAIL}
         git config --global user.name ${GITHUB_USER}
