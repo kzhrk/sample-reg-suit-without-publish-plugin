@@ -9,6 +9,10 @@ jobs:
       GITHUB_EMAIL: info@kzhrk.com
     steps:
     - uses: actions/checkout@v2
+    - name: checkout
+      run: |
+        git fetch
+        git checkout -b ${{github.event.pull_request.head.ref}} origin/${{github.event.pull_request.head.ref}}
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -33,10 +37,6 @@ jobs:
       run: |
         git config --global user.email ${GITHUB_EMAIL}
         git config --global user.name ${GITHUB_USER}
-    - name: pull
-      run: |
-        git fetch
-        git merge origin/${{github.event.pull_request.head.ref}} 
     - name: stage changed files
       run: git add .
     - name: commit changed files
