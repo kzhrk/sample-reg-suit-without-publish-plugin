@@ -28,6 +28,10 @@ jobs:
     - name: run screenshot
       run: |
         yarn screenshot
+    - name: setup github user
+      run: |
+        git config --global user.email info@kzhrk.com
+        git config --global user.name kzhrk
     - name: stage changed files
       run: git add .
     - name: commit changed files
