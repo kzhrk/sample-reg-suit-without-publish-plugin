@@ -15,9 +15,6 @@
     "@storybook/vue": "^5.3.18",
     "babel-loader": "^8.1.0",
     "babel-preset-vue": "^2.0.2",
-    "reg-keygen-git-hash-plugin": "^0.8.5",
-    "reg-notify-github-plugin": "^0.8.5",
-    "reg-suit": "^0.10.0",
     "storycap": "^2.3.5",
     "vue-loader": "^15.9.1",
     "vue-template-compiler": "^2.6.11"
