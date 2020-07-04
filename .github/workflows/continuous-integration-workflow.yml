@@ -3,6 +3,9 @@ on: pull_request
 jobs:
   setup:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_USER: kzhrk
+      GITHUB_EMAIL: info@kzhrk.com
     steps:
     - uses: actions/checkout@v2
     - name: checkout
@@ -26,19 +29,9 @@ jobs:
         node-version: '12.x'
     - name: Install dependencies
       run: yarn install --frozen-lockfile
-  update-snapshots:
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
     - name: run screenshot
       run: |
         yarn screenshot
-  git-push:
-    runs-on: ubuntu-latest
-    needs: update-snapshots
-    env:
-      GITHUB_USER: kzhrk
-      GITHUB_EMAIL: info@kzhrk.com
     steps:
     - name: setup github user
       run: |
@@ -47,6 +40,6 @@ jobs:
     - name: stage changed files
       run: git add .
     - name: commit changed files
-      run: git commit -m 'Update snapshots'
-    - name: push
-      run: git push origin HEAD:${{github.event.pull_request.head.ref}}
+      run: |
+        git commit -m 'Update snapshots'
+        git push origin HEAD:${{github.event.pull_request.head.ref}}
